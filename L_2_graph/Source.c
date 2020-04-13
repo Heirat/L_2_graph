@@ -1,9 +1,39 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <locale.h>
+/*
+Червинский Артём ИВТ-13БО
+Лабараторная работа 2. Графы
 
+Требуется: найти минимально удаленную от всех узлов точку на графе,
+которая может принадлежать узлу или ребру.
+
+Доказано: точка с минимальной суммой расстояний S до узлов
+может лежать либо только на узле, либо с фиксированным S лежать
+как на ребре, так и на узлах, которые оно соединяет.
+
+Программа читает граф в матрицу смежности.
+С помощью алгоритма Дейкстры находит сумму кротчайших путей
+для каждого узла и находит узел, для которого сумма минимальна.
+*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <locale.h>
+#include "graph.h"
 int main() {
 	setlocale(LC_ALL, "RUS");
+	int adj_mat[MAX_SIZE][MAX_SIZE];
+	int min_i;
+	int n, k;
+
+	if (Input_graph (adj_mat, &n, &k) == 1)
+	{
+		printf ("Некорректный ввод\n");
+		system ("pause");
+		return 0;
+	}
+
+	Print_graph (adj_mat, n);
+
+	min_i = Get_min_sum_i (adj_mat, n);
+	
+	printf ("Место встречи всех людей - дом №%d\n", min_i+1);
 
 	system("pause");
 	return 0;
