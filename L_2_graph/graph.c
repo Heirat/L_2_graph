@@ -47,7 +47,7 @@ void Print_graph (int arr[][MAX_SIZE], int n)
 // Ќаходит минимальную сумму рассто€ний от выбранного до остальных узлов
 int Find_dist_dijkstra (int a[][MAX_SIZE], int n, int st) //st от нул€
 {
-	int i, j, min_dist = 0, min_s = 0;;
+	int i, j, min_dist = 0, min_s = 0;
 	int dist[MAX_SIZE], used[MAX_SIZE];	
 	int min_vertex = st;
 
@@ -75,9 +75,9 @@ int Find_dist_dijkstra (int a[][MAX_SIZE], int n, int st) //st от нул€
 				min_vertex = j;
 			}		
 	}
+
 	for (i = 0; i < n; i++)	
 		min_s += dist[i];
-	
 	return min_s;
 }
 
@@ -90,7 +90,7 @@ int Get_min_sum_i (int a[][MAX_SIZE], int n)
 	for (i = 0; i < n; i++)
 	{
 		dist = Find_dist_dijkstra (a, n, i);
-		if (dist < min_sum)
+		if (dist <= min_sum)
 		{
 			min_sum = dist;
 			min_i = i;
